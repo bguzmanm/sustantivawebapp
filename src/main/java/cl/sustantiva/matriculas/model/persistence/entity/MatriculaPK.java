@@ -13,6 +13,14 @@ public class MatriculaPK implements Serializable {
     @Column(name="id_curso")
     private int cursoId;
 
+    public MatriculaPK() {
+    }
+
+    public MatriculaPK(int estudianteId, int cursoId) {
+        this.estudianteId = estudianteId;
+        this.cursoId = cursoId;
+    }
+
     public int getEstudianteId() {
         return estudianteId;
     }

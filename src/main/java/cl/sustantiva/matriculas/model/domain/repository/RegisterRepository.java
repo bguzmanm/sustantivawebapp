@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface RegisterRepository {
     Optional<List<Register>> findAll();
-    Optional<Register> findById(int registerId);
+    Optional<Register> findById(int studentId, int registerId);
     Register save(Register register);
-    void delete(int registerId);
+    void delete(int studentId, int registerId);
 }

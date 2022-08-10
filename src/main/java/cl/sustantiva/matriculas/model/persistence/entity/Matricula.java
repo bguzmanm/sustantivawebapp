@@ -11,11 +11,13 @@ public class Matricula {
     private MatriculaPK id;
     private LocalDate fecha;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @MapsId("estudianteId")
+    @JoinColumn(name="id_estudiante", insertable = false, updatable = false)
     private Estudiante estudiante;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @MapsId("cursoId")
+    @JoinColumn(name="id_curso", insertable = false, updatable = false)
     private Curso curso;
 
     public MatriculaPK getId() {

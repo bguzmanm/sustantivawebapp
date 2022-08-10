@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de Matrículas</title>
+</head>
+<body>
+
+<table>
+    <thead>
+    <tr>
+        <th>Est Id</th>
+        <th>Estudiante</th>
+        <th>Curso Id</th>
+        <th>Curso</th>
+        <th>Fecha</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr th:each="register: ${registers}">
+            <td th:text="${register.getStudentId()}"></td>
+            <td th:text="${register.student.name}"></td>
+            <td th:text="${register.gradeId}"></td>
+            <td th:text="${register.grade.name}"></td>
+            <td th:text="${register.date}"></td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
