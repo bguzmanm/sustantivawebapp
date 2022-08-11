@@ -1,5 +1,7 @@
 package cl.sustantiva.matriculas.model.domain.dto;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.time.LocalDate;
 
 
@@ -8,6 +10,7 @@ public class Register {
     private Integer gradeId;
     private Student student;
     private Grade grade;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate date;
 
     public Integer getStudentId() {
@@ -48,5 +51,16 @@ public class Register {
 
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    @Override
+    public String toString() {
+        return "Register{" +
+                "studentId=" + studentId +
+                ", gradeId=" + gradeId +
+                ", student=" + student +
+                ", grade=" + grade +
+                ", date=" + date +
+                '}';
     }
 }

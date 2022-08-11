@@ -28,8 +28,8 @@ public class MatriculaRepository implements RegisterRepository {
     }
 
     @Override
-    public Optional<Register> findById(int studentId, int registerId) {
-        return crud.findById(new MatriculaPK(studentId, registerId))
+    public Optional<Register> findById(int studentId, int gradeId) {
+        return crud.findById(new MatriculaPK(studentId, gradeId))
                 .map(mapper::toRegister);
     }
 
@@ -39,8 +39,13 @@ public class MatriculaRepository implements RegisterRepository {
     }
 
     @Override
-    public void delete(int studentId, int registerId) {
-        crud.deleteById(new MatriculaPK(studentId, registerId));
+    public void delete(int studentId, int gradeId) {
+        crud.deleteById(new MatriculaPK(studentId, gradeId));
+    }
+
+    @Override
+    public boolean existsById(int studentId, int gradeId) {
+        return crud.existsById(new MatriculaPK(studentId, gradeId));
     }
 
 }

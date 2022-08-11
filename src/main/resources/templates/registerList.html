@@ -3,29 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <title>Registro de Matrículas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 <body>
-
-<table>
-    <thead>
+<div class="container">
+    <header>
+        <h1>Lista de Matriculas</h1>
+    </header>
+    <div class="row">
+        <div class="col md-3">
+            <a th:href="@{/register/new}" class="btn btn-primary">Nueva Matricula</a>
+        </div>
+    </div>
+<table class="table">
+    <thead class="table-dark">
     <tr>
         <th>Est Id</th>
         <th>Estudiante</th>
         <th>Curso Id</th>
         <th>Curso</th>
         <th>Fecha</th>
+        <th>Acciones</th>
     </tr>
     </thead>
     <tbody>
         <tr th:each="register: ${registers}">
-            <td th:text="${register.getStudentId()}"></td>
+            <td th:text="${register.studentId}"></td>
             <td th:text="${register.student.name}"></td>
             <td th:text="${register.gradeId}"></td>
             <td th:text="${register.grade.name}"></td>
-            <td th:text="${register.date}"></td>
+            <td th:text="${#temporals.format(register.date, 'dd-MM-yyyy')}"></td>
+            <td><a th:href="@{
+                    /register/{studentId}/{gradeId}
+                    (studentId=${register.studentId}, gradeId=${register.gradeId})}">editar</a>
+                <a th:href="@{
+                    /register/del/{studentId}/{gradeId}
+                    (studentId=${register.studentId}, gradeId=${register.gradeId})}">borrar</a>
+            </td>
         </tr>
     </tbody>
 </table>
-
+</div>
 </body>
 </html>
